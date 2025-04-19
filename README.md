@@ -1,98 +1,93 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# Bookmark App
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+Next.js + NestJS + GraphQL + Prisma + PostgreSQL で構成された個人開発用ブックマークアプリ
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+---
 
-## Description
+## ▶️ モチーフ
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+私用のサイトメモを、タイトル & URL で登録、一覧で検索、リンクして飛べる。
 
-## Project setup
+> "ブラウザ上でサイトをまとめる" ことに特化した個人開発用アプリ
 
-```bash
-$ npm install
+---
+
+## ▶️ 機能
+
+- ブックマークの新規登録 (title, url)
+- 登録されたリストの表示
+- 削除機能
+- TailwindCSS を用いたシンプル UI
+
+---
+
+## ▶️ 技術スタック
+
+### ▶️ フロントエンド (web)
+
+- Next.js
+- TypeScript
+- Apollo Client
+- Tailwind CSS
+
+### ▶️ バックエンド (service)
+
+- NestJS
+- GraphQL (Code First)
+- Prisma (ORM)
+- PostgreSQL
+
+---
+
+## ▶️ ディレクトリ構成
+
+```plaintext
+bookmark-app/
+├── service/                      # NestJS backend
+│   ├── src/                      # GraphQL resolver, service, moduleなど
+│   ├── prisma/                   # schema.prisma とマイグレーション
+│   │   └── schema.prisma
+│   ├── .env                      # DATABASE_URL など
+│   └── package.json
+│
+├── web/                          # Next.js frontend
+│   ├── pages/                    # ページルーティング
+│   ├── graphql/                  # クエリ・ミューテーション定義
+│   ├── apollo-client.ts         # Apollo Client 設定
+│   ├── .env.local                # NEXT_PUBLIC_API_URL を定義
+│   └── package.json
+│
+├── README.md
+└── .gitignore
 ```
 
-## Compile and run the project
+</details>
 
-```bash
-# development
-$ npm run start
+---
 
-# watch mode
-$ npm run start:dev
+## ▶️ 開発メモ
 
-# production mode
-$ npm run start:prod
-```
+- 一番最初は NestJS で Prisma + GraphQL の最小構成を作成
+- Next.js の仕様を合わせて Apollo Client との連携を試しながら開発
+- PrismaClient の output 設定も Prisma 7 対応のために追加
 
-## Run tests
+---
 
-```bash
-# unit tests
-$ npm run test
+## ▶️ 現状
 
-# e2e tests
-$ npm run test:e2e
+- フロントは Vercel で公開中 ✅
+- バックエンドは ローカル PostgreSQL で開発中のみ ✅
 
-# test coverage
-$ npm run test:cov
-```
+---
 
-## Deployment
+## ▶️ 今後
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+- サービスを Render または Railway などに公開して、誰でも使えるように
+- 編集機能 / カテゴリ分類 / 検索機能 などを追加していく
+- 認証 (ログイン) 機能も展開予定
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+---
 
-```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
-```
+## ▶️ 開発者
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
-
-## Resources
-
-Check out a few resources that may come in handy when working with NestJS:
-
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+- 名前：**@rion0918**
