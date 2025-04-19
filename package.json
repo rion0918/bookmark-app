@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "name": "service",
   "version": "0.0.1",
   "description": "",
@@ -75,5 +76,9 @@
     ],
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
+=======
+  "devDependencies": {
+    "prettier": "^3.5.3"
+>>>>>>> 652105f (web画面作成)
   }
 }
