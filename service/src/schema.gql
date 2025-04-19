@@ -1,0 +1,17 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Bookmark {
+  id: Int!
+  title: String!
+  url: String!
+}
+
+type Query {
+  bookmarks: [Bookmark!]!
+}
+
+type Mutation {
+  createBookmark(title: String!, url: String!): Bookmark!
+}
