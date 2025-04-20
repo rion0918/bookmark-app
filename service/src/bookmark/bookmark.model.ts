@@ -4,11 +4,11 @@ import { ObjectType, Field, Int } from '@nestjs/graphql';
 @ObjectType()
 export class Bookmark {
   @Field(() => Int)
-  id: number;
+  id!: number;
 
   @Field()
-  title: string;
+  title!: string;
 
   @Field()
-  url: string;
+  url!: string;
 }
