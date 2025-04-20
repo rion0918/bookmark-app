@@ -1,6 +1,5 @@
 import { gql, useMutation, useQuery } from '@apollo/client';
 import React, { useState } from 'react';
-import { useRouter } from 'next/router';
 
 const GET_BOOKMARKS = gql`
   query GetBookmarks {
@@ -29,7 +28,6 @@ interface Bookmark {
 }
 
 export default function Home() {
-  const router = useRouter();
   const { data, loading, error, refetch } = useQuery(GET_BOOKMARKS);
   const [createBookmark] = useMutation(CREATE_BOOKMARK);
 
