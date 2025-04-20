@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { gql, useMutation } from '@apollo/client';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 const LOGIN_MUTATION = gql`
   mutation Login($input: LoginInput!) {
@@ -60,9 +61,9 @@ export default function LoginPage() {
         </form>
         <p className="mt-4 text-sm text-center">
           会員登録がまだの方は{' '}
-          <a href="/signup" className="text-blue-400 underline hover:text-blue-200">
+          <Link href="/signup" className="text-blue-400 underline hover:text-blue-200">
             こちら
-          </a>{' '}
+          </Link>{' '}
           から新規登録できます。
         </p>
       </div>
