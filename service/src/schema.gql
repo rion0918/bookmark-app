@@ -14,16 +14,4 @@ type Query {
 
 type Mutation {
   createBookmark(title: String!, url: String!): Bookmark!
-  signup(input: SignupInput!): String!
-  login(input: LoginInput!): String!
-}
-
-input SignupInput {
-  email: String!
-  password: String!
-}
-
-input LoginInput {
-  email: String!
-  password: String!
 }

@@ -15,9 +15,7 @@ export class BookmarkService {
       data: {
         title,
         url,
-        user: {
-          connect: { id: userId },
-        },
+        userId: 1,
       },
     });
   }

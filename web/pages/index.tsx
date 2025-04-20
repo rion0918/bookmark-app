@@ -1,5 +1,5 @@
 import { gql, useMutation, useQuery } from '@apollo/client';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 
 const GET_BOOKMARKS = gql`
@@ -36,14 +36,6 @@ export default function Home() {
   const [title, setTitle] = useState('');
   const [url, setUrl] = useState('');
 
-  // JWTチェック（なければログイン画面へ）
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (!token) {
-      router.push('/login');
-    }
-  }, [router]);
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
   
@@ -55,11 +47,6 @@ export default function Home() {
     try {
       await createBookmark({
         variables: { title, url },
-        context: {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem('token')}`,
-          },
-        },
       });
       setTitle('');
       setUrl('');
@@ -75,15 +62,6 @@ export default function Home() {
   return (
     <div className="flex items-center justify-center min-h-screen bg-black text-white">
       <div className="w-full max-w-xl p-6 bg-gray-900 rounded shadow-lg">
-        <button
-          onClick={() => {
-            localStorage.removeItem('token');
-            router.push('/login');
-          }}
-          className="mb-4 bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700"
-        >
-          ログアウト
-        </button>
         <h1 className="text-2xl font-bold mb-6 text-center">📚 Bookmarks</h1>
 
         <form onSubmit={handleSubmit} className="mb-6 flex flex-col gap-2">
